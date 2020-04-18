@@ -12,4 +12,4 @@ RedemRP Script for Horses Accessories Managment
 Video here -> https://streamable.com/ks52jf
 
 ## Contributors
-(https://github.com/z00t/)[Zoot]
+(Zoot)[https://github.com/z00t/]
