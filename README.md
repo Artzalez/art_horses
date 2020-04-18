@@ -1,6 +1,12 @@
 # art_horses
 RedemRP Script for Horses Accessories Managment
 
+## Requirements
+RedEM - https://github.com/kanersps/redem
+RedEM: RP - https://github.com/RedEM-RP/redem_roleplay
+MySQL-Async - https://github.com/amakuu/mysql-async-temporary
+RedEM: RP Identity - https://github.com/RedEM-RP/redemrp_identity
+
 ## How to install
 
 * Copy and paste ```art_horses``` folder to ```resources```
