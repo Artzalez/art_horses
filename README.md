@@ -24,4 +24,4 @@ Video here -> https://streamable.com/ks52jf
 ## Contributors
 Thanks (Zoot)[https://github.com/z00t/] For his script z00t_horses
 
-Thanks (Xmau)[https://github.com/Xmaught] For create menus when i create functions
+Thanks (Xmau)[https://github.com/Xmaught] For create this script with me
