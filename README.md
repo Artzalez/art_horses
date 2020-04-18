@@ -15,6 +15,7 @@ RedEM: RP Identity - https://github.com/RedEM-RP/redemrp_identity
 * Copy and paste ```art_horses``` folder to ```resources```
 * Load ```art_horses/sql.sql``` file in your database
 * Add ```start art_horses``` to your ```server.cfg``` file
+* Edit ```art_horses/config.lua``` to add new items, change prices, language, etc
 * Have Fun!
 
 ## How to Work this?
