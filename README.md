@@ -21,7 +21,11 @@ RedEM: RP Identity - https://github.com/RedEM-RP/redemrp_identity
 ## How to Work this?
 Video here -> https://streamable.com/ks52jf
 
+Viedo of new shop - > https://streamable.com/fbgyot
+
 ## Contributors
 Thanks (Zoot)[https://github.com/z00t/] For his script z00t_horses
 
 Thanks (Xmau)[https://github.com/Xmaught] For create this script with me
+
+Thanks (mrlupo)[https://github.com/mrlupo] For his script elrp_horsedealer to implement shop horses
