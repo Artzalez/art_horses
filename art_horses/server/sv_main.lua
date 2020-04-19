@@ -2,6 +2,47 @@ local MisCaballos = {}
 local MiComplementos = {}
 local StableSlots = 5
 
+-- Buy Horse from MRLupo
+RegisterServerEvent('rlc_caballos:buyhorse')
+AddEventHandler( 'rlc_caballos:buyhorse', function ( args, name )
+
+    local _src   = source
+    local _price = args['Price']
+    local _level = args['Level']
+    local _model = args['Model']
+
+
+	TriggerEvent('redemrp:getPlayerFromId', _src, function(user)
+        u_identifier = user.getIdentifier()
+        u_level = user.getLevel()
+        u_charid = user.getSessionVar("charid")
+        u_money = user.getMoney()
+    end)
+
+    if u_money <= _price then
+        TriggerClientEvent("redemrp_notification:start", _src, "You don't have enough money", 3, "error")
+        return
+    end
+
+    if u_level <= _level then
+        TriggerClientEvent("redemrp_notification:start", _src, "You don't have enough level", 3, "error")
+        return
+    end
+
+	TriggerEvent('redemrp:getPlayerFromId', _src, function(user)
+        user.removeMoney(_price)
+    end)
+
+    local Parameters = { ['identifier'] = u_identifier, ['charid'] = u_charid, ['horse'] = _model, ['type'] = "horse", ['name'] = name }
+    MySQL.Async.execute("INSERT INTO stables ( `identifier`, `charid`, `vehicles`, `type`, `name`) VALUES ( @identifier, @charid, @horse, @type, @name )", Parameters)
+    TriggerClientEvent("redemrp_notification:start", _src, "You got a new horse, open your menu and set default", 3, "success")
+
+	actualizarDb(_src)
+
+end)
+
+
+
 ---MENUS---
 RegisterServerEvent('rlc_caballos:compraComplementos')
 AddEventHandler('rlc_caballos:compraComplementos', function(hash,tipo,precio,nombre)
@@ -71,7 +112,7 @@ RegisterServerEvent('z00thorses:stableHorse')
 AddEventHandler('z00thorses:stableHorse', function(id)
 local _source = source
 local _id = id
-	actualizarDb()
+	actualizarDb(-1)
 end)
 
 RegisterServerEvent('z00thorses:newVehicle')
@@ -119,7 +160,7 @@ local _id = id
 				name = _vehName,
 				kind = _type
 			}, function(rowsChanged)
-				actualizarDb()
+				actualizarDb(-1)
 			end)
 
 			
@@ -194,7 +235,7 @@ AddEventHandler('rlc_caballos:liberarCaballo', function(caballoActual)
 		print(caballoActual)
 		TriggerClientEvent("redemrp_notification:start", source, "Free this Horse", 3, "success")
 		MySQL.Async.execute("DELETE FROM stables WHERE `identifier`=@identifier AND `charid`=@charid AND `id`=@id AND `default`=1", {identifier = identifier, charid = charid, id=caballoActual}, function(rowsChanged)
-			actualizarDb()
+			actualizarDb(-1)
 		end)
 	end)
 end)
@@ -235,7 +276,7 @@ AddEventHandler('redemrp:playerLoaded', function(source, user)
 	end)
 end)
 
-function actualizarDb() 
+function actualizarDb(src) 
 	MySQL.ready(function ()
 		MisCaballos = {}
         MySQL.Async.fetchAll('SELECT * FROM stables', {}, function(caballos)
@@ -250,7 +291,7 @@ function actualizarDb()
 			end
 		end)
 		Wait(1000)
-		TriggerClientEvent('rlc_caballos:forzarActualizar', -1)
+		TriggerClientEvent('rlc_caballos:forzarActualizar', src)
     end)
 end
 
@@ -278,7 +319,7 @@ AddEventHandler('onResourceStart', function (resourceName)
       return
     end
     MySQL.ready(function()
-		actualizarDb()
+		actualizarDb(-1)
 		actualizarAccDb(-1)
 		print('Horses Loaded')
     end)

@@ -39,11 +39,9 @@ Citizen.CreateThread(function()
 					if WarMenu.MenuButton(Config.Language["subMenuComplementsHorsesTitle"], 'menu_complementos_caballos') then
 						
 					end
---[[ Mostar menu complementos carros
-					if WarMenu.MenuButton('Carros', 'menu_complementos_carros') then
+					if WarMenu.MenuButton(Config.Language["menuHorsesTitle"], 'menu_comprar_caballos') then
 						
 					end
-]]
 					WarMenu.Display()
 					
 				elseif WarMenu.IsMenuOpened('menu_complementos_caballos') then
@@ -93,7 +91,38 @@ Citizen.CreateThread(function()
 				Citizen.Wait(0)
 			end
 		end)
-		
+
+Citizen.CreateThread( function()
+	WarMenu.CreateSubMenu('menu_comprar_caballos', 'menu_complementos', Config.Language["menuHorsesTitle"]) -- from mrlupo
+	repeat
+		if WarMenu.IsMenuOpened('menu_comprar_caballos') then
+			for i = 1, #Config.Horses do
+				if WarMenu.Button(Config.Horses[i]['Text'], Config.Horses[i]['SubText'], Config.Horses[i]['Desc']) then
+					SetHorseNameOnBuy(i)
+					WarMenu.CloseMenu()
+				end
+			end
+			WarMenu.Display()
+		end
+		Citizen.Wait(0)
+	until false
+end)
+
+function SetHorseNameOnBuy(i)
+	Citizen.CreateThread( function()
+		AddTextEntry("FMMC_MPM_TYP8", "Elige un nombre para tu nuevo caballo:")
+		DisplayOnscreenKeyboard(1, "FMMC_MPM_TYP8", "", "Name of horse?", "", "", "", 30)
+		while (UpdateOnscreenKeyboard() == 0) do
+			DisableAllControlActions(0);
+			Citizen.Wait(0);
+		end
+		if (GetOnscreenKeyboardResult()) then
+			inPut1 = GetOnscreenKeyboardResult()
+			TriggerServerEvent('rlc_caballos:buyhorse', Config.Horses[i]['Param'], inPut1)
+		end
+	end)
+end
+
 --Sillas
 Citizen.CreateThread( function()
 	WarMenu.CreateSubMenu('menu_complementos_caballos_sillas','menu_complementos_caballos', Config.Menu[1].Text)

@@ -3,6 +3,7 @@ Config = {}
 Config.OpenKeyMenu = 0x26E9DC00
 
 Config.Language = {
+    ['menuHorsesTitle'] = "Shop Horses",
     ['menuComplementsTitle'] = "Accessories",
     ['menuComplementsSubTitle'] = "Mount Accessories",
     ['subMenuComplementsHorsesTitle'] = "Horses",
@@ -84,6 +85,72 @@ Config.Menu = {
        }
    }
 }
+
+
+--Horses buy Menu from mrlupo
+Config.Horses = {
+	{
+		['Text'] = "$20 - Tennesseewalker Chestnut",
+		['SubText'] = "",
+		['Desc'] = "Level Require : ~pa~0",
+		['Param'] = {
+			['Price'] = 20,
+			['Model'] = GetHashKey("A_C_HORSE_TENNESSEEWALKER_CHESTNUT"),
+			['Level'] = 0
+		}
+	},
+	{
+		['Text'] = "$35 - SHIRE RAVENBLACK",
+		['SubText'] = "",
+		['Desc'] = "Level Require : ~pa~3",
+		['Param'] = {
+			['Price'] = 35,
+			['Model'] = GetHashKey("A_C_HORSE_SHIRE_RAVENBLACK"),
+			['Level'] = 0
+		}
+	},
+	{
+		['Text'] = "$45 - APPALOOSA LEOPARD",
+		['SubText'] = "",
+		['Desc'] = "Level Require : ~pa~6",
+		['Param'] = {
+			['Price'] = 35,
+			['Model'] = GetHashKey("A_C_HORSE_APPALOOSA_LEOPARD"),
+			['Level'] = 6
+		}
+	},
+	{
+		['Text'] = "$60 - Mr Bill W",
+		['SubText'] = "",
+		['Desc'] = "Level Require : ~pa~9",
+		['Param'] = {
+			['Price'] = 60,
+			['Model'] = GetHashKey("A_C_HORSE_GANG_BILL"),
+			['Level'] = 9
+		}
+	},
+	{
+		['Text'] = "$70 - Kentuckysaddle Black",
+		['SubText'] = "",
+		['Desc'] = "Level Require : ~pa~13",
+		['Param'] = {
+			['Price'] = 70,
+			['Model'] = GetHashKey("A_C_HORSE_KENTUCKYSADDLE_BLACK"),
+			['Level'] = 13
+		},
+	},
+	{
+		['Text'] = "$150 - THOROUGHBRED BRINDLE",
+		['SubText'] = "",
+		['Desc'] = "Level Require : ~pa~16",
+		['Param'] = {
+			['Price'] = 150,
+			['Model'] = GetHashKey("A_C_HORSE_THOROUGHBRED_BRINDLE"),
+			['Level'] = 16
+		}
+	}
+}
+
 --Sillas complementos
 Config.MenuSillas = {
    {
