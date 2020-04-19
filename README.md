@@ -21,7 +21,7 @@ RedEM: RP Identity - https://github.com/RedEM-RP/redemrp_identity
 ## How to Work this?
 Video here -> https://streamable.com/ks52jf
 
-Viedo of new shop - > https://streamable.com/fbgyot
+Video of new shop - > https://streamable.com/fbgyot
 
 ## Contributors
 Thanks (Zoot)[https://github.com/z00t/] For his script z00t_horses
