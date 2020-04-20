@@ -22,7 +22,8 @@ Citizen.CreateThread(function()
 			WarMenu.CreateSubMenu('menu_complementos_caballos_estribos', 'menu_complementos_caballos', Config.Menu[7].Text)
 
 		--Menu Carros feature
-
+		WarMenu.CreateSubMenu('menu_comprar_caballos', 'menu_complementos', Config.Language["menuHorsesTitle"])
+		WarMenu.SetSubTitle('menu_comprar_caballos', Config.Language["menuHorsesTitle"])
 --[[
 		WarMenu.CreateSubMenu('menu_complementos_carros', 'menu_complementos', 'Carros')
 		WarMenu.SetSubTitle('menu_complementos_carros', 'Menu de carros')
@@ -38,8 +39,7 @@ Citizen.CreateThread(function()
 				if WarMenu.IsMenuOpened('menu_complementos') then
 					if WarMenu.MenuButton(Config.Language["subMenuComplementsHorsesTitle"], 'menu_complementos_caballos') then
 						
-					end
-					if WarMenu.MenuButton(Config.Language["menuHorsesTitle"], 'menu_comprar_caballos') then
+					elseif WarMenu.MenuButton(Config.Language["menuHorsesTitle"], 'menu_comprar_caballos') then
 						
 					end
 					WarMenu.Display()
@@ -93,7 +93,7 @@ Citizen.CreateThread(function()
 		end)
 
 Citizen.CreateThread( function()
-	WarMenu.CreateSubMenu('menu_comprar_caballos', 'menu_complementos', Config.Language["menuHorsesTitle"]) -- from mrlupo
+ -- from mrlupo
 	repeat
 		if WarMenu.IsMenuOpened('menu_comprar_caballos') then
 			for i = 1, #Config.Horses do
@@ -104,7 +104,7 @@ Citizen.CreateThread( function()
 			end
 			WarMenu.Display()
 		end
-		Citizen.Wait(0)
+		Citizen.Wait(1)
 	until false
 end)
 
