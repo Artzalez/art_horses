@@ -532,7 +532,7 @@ AddEventHandler('z00thorses:spawnHorse', function(horseData, horseName, id, sadd
 end)
 
 function checkHorse(source, args, rawCommand)
-	local isMounted = IsPedOnMount(playerPed)
+	local isMounted = IsPedOnMount(PlayerPedId())
 	playerPed = PlayerPedId() --Updating when needed?
 	if myHorse[4] ~= 0 then
 		if not isMounted then
@@ -556,7 +556,7 @@ end
 
 function newVeh(vehType, id)
 	print(vehType, id)
-	local currentHorse = GetEntityModel(GetMount(playerPed))
+	local currentHorse = GetEntityModel(GetMount(PlayerPedId()))
 	local inPut1 = ""
 	local inPut2 = ""
 	Citizen.CreateThread(function()
@@ -585,10 +585,10 @@ end
 RegisterNetEvent('z00thorses:delMount')
 AddEventHandler('z00thorses:delMount', function()
 	
-	local currentHorse = IsEntityAMissionEntity(GetMount(playerPed))
+	local currentHorse = IsEntityAMissionEntity(GetMount(PlayerPedId()))
 	print(currentHorse)
 	if not currentHorse then
-		local horsePed = GetEntityModel(GetMount(playerPed))
+		local horsePed = GetEntityModel(GetMount(PlayerPedId()))
 		DeletePed(horsePed)
 	end
 
